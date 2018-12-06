@@ -7,6 +7,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y unzip && \
 RUN mkdir /opencv && chown appuser /opencv
 
 USER appuser
-RUN wget https://github.com/opencv/opencv/archive/3.4.4.zip -P /home/appuser && \
-    unzip /home/appuser/3.4.4.zip -d /opencv/ && \
+RUN wget -nv https://github.com/opencv/opencv/archive/3.4.4.zip -P /home/appuser && \
+    unzip -q /home/appuser/3.4.4.zip -d /opencv/ && \
     rm /home/appuser/3.4.4.zip
