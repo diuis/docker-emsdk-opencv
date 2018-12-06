@@ -8,4 +8,5 @@ RUN mkdir /opencv && chown appuser /opencv
 
 USER appuser
 RUN wget https://github.com/opencv/opencv/archive/3.4.4.zip -P /home/appuser && \
-    unzip /home/appuser/3.4.4.zip -d /opencv/
+    unzip /home/appuser/3.4.4.zip -d /opencv/ && \
+    rm /home/appuser/3.4.4.zip
