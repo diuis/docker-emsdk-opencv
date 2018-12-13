@@ -1,13 +1,13 @@
 FROM diuis/docker-emsdk-installed-python3:v1.0.12
 
+ARG OPENCV_ARCHIVE=https://github.com/diuis/opencv/tarball/3.4
+#ARG OPENCV_ARCHIVE=https://github.com/opencv/opencv/tarball/3.4.4
 
-#RUN wget -nv https://github.com/opencv/opencv/tarball/3.4.4 -O /home/appuser/opencv-3.4.4.tar && \
-RUN wget -nv https://github.com/diuis/opencv/tarball/3.4 -O /home/appuser/opencv-3.4.4.tar && \
+RUN wget -nv $OPENCV_ARCHIVE -O /home/appuser/opencv.tar && \
     mkdir /home/appuser/opencv && \
-    tar xf /home/appuser/opencv-3.4.4.tar -C /home/appuser/opencv && \
-    rm /home/appuser/opencv-3.4.4.tar && \
-    cd /home/appuser/opencv/diuis-opencv-f3a223e && \
-#    cd /home/appuser/opencv/opencv-opencv-2b01723 && \
+    tar xf /home/appuser/opencv.tar -C /home/appuser/opencv --strip-components 1 && \
+    rm /home/appuser/opencv.tar && \
+    cd /home/appuser/opencv && \
     mkdir build && \
     cd build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -57,7 +57,6 @@ RUN wget -nv https://github.com/diuis/opencv/tarball/3.4 -O /home/appuser/opencv
     make -j4
 
 USER root
-#RUN cd /home/appuser/opencv/opencv-opencv-2b01723/build \
-RUN cd /home/appuser/opencv/diuis-opencv-f3a223e/build \
+RUN cd /home/appuser/opencv/build \
     && make install \
     && ldconfig
