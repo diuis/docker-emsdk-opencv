@@ -52,3 +52,8 @@ RUN wget -nv https://github.com/opencv/opencv/tarball/3.4.4 -O /home/appuser/ope
     -D BUILD_EXAMPLES=OFF \
     -D BUILD_PACKAGE=OFF .. && \
     make -j4
+
+USER root
+RUN cd /home/appuser/opencv/opencv-opencv-2b01723/build \
+    && make install \
+    && ldconfig
