@@ -11,7 +11,7 @@ RUN wget -nv $OPENCV_ARCHIVE -O /home/appuser/opencv.tar && \
     cd /home/appuser/opencv && \
     mkdir build && \
     cd build && \
-    cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    cmake -D CMAKE_BUILD_TYPE=RELEASE -G "Unix Makefiles" \
     -D CMAKE_CXX_FLAGS_RELEASE=-DNDEBUG -O3 \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D BUILD_SHARED_LIBS=ON \
