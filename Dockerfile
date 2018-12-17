@@ -3,6 +3,7 @@ FROM diuis/docker-emsdk-installed-python3:v1.0.0
 ARG OPENCV_ARCHIVE=https://github.com/diuis/opencv/tarball/3.4
 #ARG OPENCV_ARCHIVE=https://github.com/opencv/opencv/tarball/3.4.4
 
+USER appuser
 RUN wget -nv $OPENCV_ARCHIVE -O /home/appuser/opencv.tar && \
     mkdir /home/appuser/opencv && \
     tar xf /home/appuser/opencv.tar -C /home/appuser/opencv --strip-components 1 && \
