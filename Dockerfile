@@ -1,6 +1,6 @@
-FROM diuis/docker-emsdk-installed:v1.0.1
+FROM diuis/docker-emsdk-installed:18.10
 
-ARG OPENCV_ARCHIVE=https://github.com/opencv/opencv/tarball/3.4.5
+ARG OPENCV_ARCHIVE=https://github.com/opencv/opencv/tarball/3.4.6
 
 USER appuser
 RUN wget -nv $OPENCV_ARCHIVE -O /home/appuser/opencv.tar && \
